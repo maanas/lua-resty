@@ -1,0 +1,11 @@
+.vagrant
+ansible/*
+Vagrantfile
+sso/client_body_temp/*
+sso/conf/*
+sso/conf.d/*
+sso/fastcgi_temp/*
+sso/logs/*
+sso/proxy_temp/*
+sso/scgi_temp/*
+sso/uwsgi_temp/*
