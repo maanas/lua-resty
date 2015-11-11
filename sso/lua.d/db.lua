@@ -6,7 +6,6 @@ local _M = {}
 local mt = { __index = _M }
 
 local mysql = require "resty.mysql"
-local cjson = require "cjson"
 
 function _M.new()
     -- Pull up variable from nginx
@@ -25,7 +24,7 @@ end
 function _M.query(self, sql)
     local db = self.db
     local res, err, errno, sqlstate = db:query(sql)
-    return cjson.encode(res)
+    return res
 end
 
 

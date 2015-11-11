@@ -1,6 +1,4 @@
 -- Test lua file
-local db = require "db"
-local dbc = db.new()
-
-local res = dbc:query("SELECT u_username FROM user")
+local sso = require "sso"
+res = sso:get_hash()
 ngx.say(res)
