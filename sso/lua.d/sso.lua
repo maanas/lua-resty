@@ -1,16 +1,15 @@
 -- Copyright (C) 2015 Maanas Royy (m4manas)
 
--- db module (LORM)
+-- sso module
 
 local _M = {}
 local mt = { __index = _M }
 
-local mysql = require "resty.mysql"
-local cjson = require "cjson"
+local db = require "db"
 
 function _M.new()
     -- Pull up variable from nginx
-    local db, error = mysql.new()
+    local dbc, err = db.new()
     local ok, err, errno, sqlstate = db:connect{
         host = ngx.var.db_host,
         port = 3306,
@@ -19,7 +18,7 @@ function _M.new()
         password = ngx.var.db_pass,
         max_packet_size = 1024 * 1024
     }
-    return setmetatable({db = db, err = err}, mt)
+    return setmetatable({db = db}, mt)
 end
 
 function _M.query(self, sql)

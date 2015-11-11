@@ -1,4 +1,6 @@
 -- Test lua file
-local user = require "user"
+local db = require "db"
+local dbc = db.new()
 
-ngx.say(user:get_hash())
+local res = dbc:query("SELECT u_username FROM user")
+ngx.say(res)
